@@ -1,0 +1,34 @@
+﻿<!-- Vendored from https://github.com/MidoriKami/KamiToolKit @ fdf0b553853ea81ce0dae5fecbe248c9ff641c9f (2025-12-14), the last Dalamud.NET.Sdk 13.1.0 revision. Its non-generic ICreatable matches yanmucorp Dalamud 13.0.0.16 / FFXIVClientStructs 0.0.6966.0. License remains MIT, Copyright (c) 2024 MidoriKami. See LICENSE. -->
+<Project Sdk="Dalamud.NET.Sdk/13.1.0">
+    <!-- Project settings -->
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows7.0</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+    </PropertyGroup>
+
+    <!-- Dalamud.NET.Sdk settings -->
+    <PropertyGroup>
+        <Use_DalamudPackager>false</Use_DalamudPackager>
+    </PropertyGroup>
+
+    <!-- Assets -->
+    <ItemGroup>
+        <Content Include="Assets\**\*.png" CopyToOutputDirectory="Always"/>
+    </ItemGroup>
+
+    <!-- NuGet dependencies -->
+    <ItemGroup>
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12"/>
+    </ItemGroup>
+
+    <!-- FFXIVClientStructs -->
+    <PropertyGroup Condition="Exists('..\FFXIVClientStructs')">
+        <Use_Dalamud_FFXIVClientStructs>false</Use_Dalamud_FFXIVClientStructs>
+    </PropertyGroup>
+
+    <ItemGroup Condition="Exists('..\FFXIVClientStructs')">
+        <ProjectReference Include="..\FFXIVClientStructs\FFXIVClientStructs\FFXIVClientStructs.csproj" Private="True" />
+        <ProjectReference Include="..\FFXIVClientStructs\InteropGenerator.Runtime\InteropGenerator.Runtime.csproj" Private="True" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,33 @@
+{
+  "Author": "Lily",
+  "Name": "BISBuddy",
+  "InternalName": "BisBuddy",
+  "AssemblyVersion": "0.2.9.0",
+  "Description": "台灣版《最終幻想XIV》用的 BISBuddy 0.2.9-tw。作者 Lily（https://github.com/RajahOmen/BisBuddy）。此組建給 XIVTCLauncher 搭配 yanmucorp Dalamud API 13，不是官方 Dalamud／RajahOmen 插件。介面為繁體中文。物品、職業、部位與魔晶石名稱在遊戲內依列 ID 讀取用戶端繁中資料。匯出到 xivgear.app 時使用物品 ID 與英文職業縮寫。",
+  "Punchline": "0.2.9-tw 配裝輔助（台服繁中）",
+  "RepoUrl": "https://github.com/pollyhaei-ai/ReBisBuddy",
+  "ApplicableVersion": "any",
+  "DalamudApiLevel": 13,
+  "Tags": [
+    "bis",
+    "loot",
+    "best in slot",
+    "need",
+    "greed",
+    "gearset",
+    "gear",
+    "coffer",
+    "materia",
+    "meld",
+    "etro",
+    "xivgear"
+  ],
+  "IconUrl": "https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/icon.png",
+  "ImageUrls": [
+    "https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/needgreed.png",
+    "https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/npcshopexchange.png",
+    "https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/materiamelding.png",
+    "https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/inventory.png",
+    "https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/itemtooltip.png"
+  ]
+}

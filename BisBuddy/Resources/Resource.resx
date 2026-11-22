@@ -886,4 +886,16 @@ are completed and materia is consumed.</value>
   <data name="AllowGearpiecesAsPrerequisitesHelp" xml:space="preserve">
     <value>If items assigned to a gearset as gearpieces can also be assigned to another as prerequisite items. Useful for when having BIS and prog sets for the same job at the same time.</value>
   </data>
+  <data name="ContextMenuCopyXivgear" xml:space="preserve">
+    <value>Copy for Xivgear</value>
+  </data>
+  <data name="GearsetXivgearButton" xml:space="preserve">
+    <value>Xivgear</value>
+  </data>
+  <data name="GearsetXivgearTooltip" xml:space="preserve">
+    <value>Copy a sheet xivgear.app can import. Paste it at https://xivgear.app/?page=importsheet . Items are exported by id and the job abbreviation is English, so a Traditional Chinese client still imports.</value>
+  </data>
+  <data name="MeldPlanWindowTitle" xml:space="preserve">
+    <value>Meld Plan</value>
+  </data>
 </root>

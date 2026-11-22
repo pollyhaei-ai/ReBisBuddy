@@ -28,18 +28,27 @@ namespace BisBuddy.Items
 
         public static readonly int MaxItemPrerequisites = 25;
         private ExcelSheet<Item> ItemSheet { get; init; }
-        private ExcelSheet<Item> ItemSheetEn { get; init; }
+        private ExcelSheet<Item>? ItemSheetEn { get; init; }
+        private ExcelSheet<ItemUICategory>? ItemUiCategorySheetEn { get; init; }
         private ExcelSheet<SpecialShop> ShopSheet { get; init; }
         private ExcelSheet<SheetMateria> Materia { get; init; }
         private ExcelSheet<ClassJob> ClassJobSheet { get; init; }
-        private ExcelSheet<ClassJob> ClassJobSheetEn { get; init; }
+        private ExcelSheet<ClassJob>? ClassJobSheetEn { get; init; }
         public ILookup<uint, (uint ItemId, CofferSourceType SourceType)> ItemsCoffers
         {
             get
             {
                 if (itemsCoffers == null)
                 {
-                    itemsCoffers = generateItemsCoffers(ItemSheetEn);
+                    if (ItemSheetEn is null)
+                    {
+                        logger.Error("English Item sheet is unavailable. Coffer prerequisites were not generated.");
+                        itemsCoffers = emptyCoffers();
+                    }
+                    else
+                    {
+                        itemsCoffers = generateItemsCoffers(ItemSheetEn);
+                    }
                     Task.Run(async () =>
                     {
                         await Task.Delay(3000);
@@ -79,15 +88,75 @@ namespace BisBuddy.Items
             this.dataManager = dataManager;
             this.gearpieceTypeMapper = gearpieceTypeMapper;
 
-            ItemSheet = dataManager.GetExcelSheet<Item>() ?? throw new ArgumentException("Item sheet not found");
-            ItemSheetEn = dataManager.GetExcelSheet<Item>(language: ClientLanguage.English) ?? throw new ArgumentException("Item sheet not found");
-            ShopSheet = dataManager.GetExcelSheet<SpecialShop>() ?? throw new InvalidOperationException("Special shop sheet not found");
-            Materia = dataManager.GetExcelSheet<SheetMateria>() ?? throw new InvalidOperationException("Materia sheet not found");
-            ClassJobSheet = dataManager.GetExcelSheet<ClassJob>() ?? throw new InvalidOperationException("ClassJob sheet not found");
-            ClassJobSheetEn = dataManager.GetExcelSheet<ClassJob>(language: ClientLanguage.English) ?? throw new InvalidOperationException("ClassJob En sheet not found");
+            ItemSheet = loadTraditionalSheet<Item>("Item")
+                ?? dataManager.GetExcelSheet<Item>()
+                ?? throw new InvalidOperationException("Item sheet not found");
+            ItemSheetEn = tryLoadEnglishSheet<Item>("Item");
+            ItemUiCategorySheetEn = tryLoadEnglishSheet<ItemUICategory>("ItemUICategory");
+            ShopSheet = loadTraditionalSheet<SpecialShop>("SpecialShop")
+                ?? dataManager.GetExcelSheet<SpecialShop>()
+                ?? throw new InvalidOperationException("Special shop sheet not found");
+            Materia = loadTraditionalSheet<SheetMateria>("Materia")
+                ?? dataManager.GetExcelSheet<SheetMateria>()
+                ?? throw new InvalidOperationException("Materia sheet not found");
+            ClassJobSheet = loadTraditionalSheet<ClassJob>("ClassJob")
+                ?? dataManager.GetExcelSheet<ClassJob>()
+                ?? throw new InvalidOperationException("ClassJob sheet not found");
+            ClassJobSheetEn = tryLoadEnglishSheet<ClassJob>("ClassJob");
             NameToId = [];
             materiaItemIds = [];
         }
+
+        private static readonly ClientLanguage[] TraditionalChineseLanguages =
+        [
+            ClientLanguage.ChineseTraditional,
+            ClientLanguage.TraditionalChinese,
+        ];
+
+        /// <summary>
+        /// Loads a sheet in the Taiwan client's Traditional Chinese language.
+        /// yanmucorp Dalamud 13 exposes both <see cref="ClientLanguage.ChineseTraditional"/> and
+        /// <see cref="ClientLanguage.TraditionalChinese"/>. The first one that returns a sheet is used.
+        /// </summary>
+        private ExcelSheet<T>? loadTraditionalSheet<T>(string label) where T : struct, IExcelRow<T>
+        {
+            foreach (var language in TraditionalChineseLanguages)
+            {
+                var sheet = tryGetSheet<T>(language, label);
+                if (sheet is not null)
+                {
+                    logger.Info($"Loaded {label} from ClientLanguage.{language}.");
+                    return sheet;
+                }
+            }
+
+            logger.Error($"Traditional Chinese {label} sheet was not available. Falling back to the client default language.");
+            return null;
+        }
+
+        private ExcelSheet<T>? tryLoadEnglishSheet<T>(string label) where T : struct, IExcelRow<T>
+        {
+            var sheet = tryGetSheet<T>(ClientLanguage.English, label);
+            if (sheet is null)
+                logger.Error($"English {label} sheet is not available. Name lookup and xivgear job abbreviations that need it will fail safely.");
+            return sheet;
+        }
+
+        private ExcelSheet<T>? tryGetSheet<T>(ClientLanguage language, string label) where T : struct, IExcelRow<T>
+        {
+            try
+            {
+                return dataManager.GetExcelSheet<T>(language);
+            }
+            catch (Exception ex)
+            {
+                logger.Warning(ex, $"ClientLanguage.{language} could not be loaded for {label}.");
+                return null;
+            }
+        }
+
+        private static ILookup<uint, (uint ItemId, CofferSourceType SourceType)> emptyCoffers() =>
+            Array.Empty<(uint ItemId, CofferSourceType SourceType)>().ToLookup(_ => 0u, pair => pair);
     }
 
     public interface IItemDataService
@@ -211,6 +280,19 @@ namespace BisBuddy.Items
         /// <returns>The <see cref="ClassJobInfo"/> for the matching job if one is found, else a default JobInfo object
         /// representing no job being found with a 0 JobId</returns>
         public ClassJobInfo GetClassJobInfoById(uint jobId);
+
+        /// <summary>
+        /// English ClassJob abbreviation for the row, read from the English sheet.
+        /// Empty when the English sheet or the row is unavailable.
+        /// </summary>
+        public string GetEnglishClassJobAbbreviation(uint classJobId);
+
+        public bool ItemCanBeHq(uint itemId);
+
+        /// <summary>
+        /// Equip level of the item, or 0 when the row cannot be read.
+        /// </summary>
+        public int GetItemEquipLevel(uint itemId);
 
         /// <summary>
         /// Given a list of item ids, return all class job ids that can use them all

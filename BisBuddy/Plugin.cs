@@ -39,7 +39,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using BisBuddy.Services.IPC;
-using KamiToolKit.Extensions;
 using Dalamud.Utility;
 
 namespace BisBuddy;
@@ -312,7 +311,7 @@ public sealed partial class Plugin : IDalamudPlugin
     private void startPlugin()
     {
         var resolvedPluginInterface = host.Services.GetRequiredService<IDalamudPluginInterface>();
-        KamiToolKitLibrary.InitializeAsync(resolvedPluginInterface).WaitSafely();
+        KamiToolKitLibrary.Initialize(resolvedPluginInterface);
         host.Start();
 
 #if DEBUG

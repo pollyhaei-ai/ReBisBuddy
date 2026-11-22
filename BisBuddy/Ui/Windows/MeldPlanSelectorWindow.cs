@@ -37,7 +37,7 @@ public unsafe class MeldPlanSelectorWindow : Window, IDisposable
         IRendererFactory rendererFactory,
         IDebugService debugService
         )
-        : base("Meld Plan###meld plan selector bisbuddy")
+        : base($"{Resource.MeldPlanWindowTitle}###meld plan selector bisbuddy")
     {
         Flags = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
                 ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize;

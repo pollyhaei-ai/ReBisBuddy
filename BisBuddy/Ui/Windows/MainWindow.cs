@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Numerics;
-using System.Reflection;
 
 namespace BisBuddy.Ui.Windows;
 
@@ -37,7 +36,7 @@ public class MainWindow : Window, IDisposable
     private List<MainWindowTab> tabTypes;
 
     private static readonly string PluginVersion =
-        $" v{Assembly.GetExecutingAssembly().GetName().Version}";
+        $" {Constants.PluginVersionLabel}";
 
     public MainWindow(
         IIndex<MainWindowTab, TabRenderer<MainWindowTab>> tabRendererIndex,

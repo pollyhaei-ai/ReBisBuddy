@@ -1,13 +1,16 @@
 using BisBuddy.Gear;
+using BisBuddy.Items;
 using BisBuddy.Resources;
 using BisBuddy.Services;
 using BisBuddy.Services.Configuration;
+using BisBuddy.Services.Export;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin.Services;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
@@ -20,7 +23,8 @@ namespace BisBuddy.Ui.Renderers.Components
         IConfigurationService configurationService,
         IAttributeService attributeService,
         IJsonSerializerService jsonSerializerService,
-        IDebugService debugService
+        IDebugService debugService,
+        IItemDataService itemDataService
         ) : ComponentRendererBase<Gearset>
     {
         private readonly ITypedLogger<GearsetComponentRenderer> logger = logger;
@@ -30,6 +34,7 @@ namespace BisBuddy.Ui.Renderers.Components
         private readonly IAttributeService attributeService = attributeService;
         private readonly IJsonSerializerService jsonSerializerService = jsonSerializerService;
         private readonly IDebugService debugService = debugService;
+        private readonly IItemDataService itemDataService = itemDataService;
         private Gearset? gearset;
 
         private UiTheme uiTheme =>
@@ -355,6 +360,20 @@ namespace BisBuddy.Ui.Renderers.Components
                     ImGui.SetClipboardText(jsonSerializerService.Serialize(gearset));
                 if (ImGui.IsItemHovered())
                     UiComponents.SetSolidTooltip(Resource.GearsetJsonTooltip);
+                ImGui.SameLine();
+                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExternalLinkSquareAlt, $"{Resource.GearsetXivgearButton}##export_gearset_xivgear"))
+                {
+                    try
+                    {
+                        ImGui.SetClipboardText(XivgearSheetExporter.Build(gearset, itemDataService));
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex, $"Failed to build an xivgear.app sheet for \"{gearset.Name}\".");
+                    }
+                }
+                if (ImGui.IsItemHovered())
+                    UiComponents.SetSolidTooltip(Resource.GearsetXivgearTooltip);
             }
         }
 

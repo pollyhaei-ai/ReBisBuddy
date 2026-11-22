@@ -345,7 +345,7 @@ public static unsafe partial class UiHelper
             imageNode->AtkResNode.NodeFlags = resNodeFlags;
             imageNode->AtkResNode.DrawFlags = resNodeDrawFlags;
             imageNode->WrapMode = wrapMode;
-            imageNode->Flags = imageNodeFlags;
+            imageNode->Flags = (byte)imageNodeFlags;
             return true;
         }
 
