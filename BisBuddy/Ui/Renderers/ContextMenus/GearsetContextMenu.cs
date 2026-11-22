@@ -1,13 +1,16 @@
 using BisBuddy.Factories;
 using BisBuddy.Gear;
 using BisBuddy.Import;
+using BisBuddy.Items;
 using BisBuddy.Resources;
 using BisBuddy.Services;
 using BisBuddy.Services.Configuration;
+using BisBuddy.Services.Export;
 using BisBuddy.Services.Gearsets;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Utility;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,13 +24,15 @@ namespace BisBuddy.Ui.Renderers.ContextMenus
         IGearsetsService gearsetsService,
         IConfigurationService configurationService,
         IAttributeService attributeService,
-        IJsonSerializerService jsonSerializerService
+        IJsonSerializerService jsonSerializerService,
+        IItemDataService itemDataService
         ) : ContextMenuBase<Gearset, GearsetContextMenu>(logger, factory)
     {
         private readonly IGearsetsService gearsetsService = gearsetsService;
         private readonly IConfigurationService configurationService = configurationService;
         private readonly IAttributeService attributeService = attributeService;
         private readonly IJsonSerializerService jsonSerializerService = jsonSerializerService;
+        private readonly IItemDataService itemDataService = itemDataService;
 
         private UiTheme uiTheme => configurationService.UiTheme;
 
@@ -97,11 +102,27 @@ namespace BisBuddy.Ui.Renderers.ContextMenus
                     icon: FontAwesomeIcon.FileExport,
                     onClick: () => ImGui.SetClipboardText(jsonSerializerService.Serialize(gearset))),
                 factory.Create(
+                    entryName: Resource.ContextMenuCopyXivgear,
+                    icon: FontAwesomeIcon.FileExport,
+                    onClick: () => copyXivgear(gearset)),
+                factory.Create(
                     entryName: Resource.ContextMenuDeleteGearset,
                     icon: FontAwesomeIcon.Trash,
                     onClick: () => gearsetsService.RemoveGearset(gearset),
                     backgroundColor: () => uiTheme.DeleteColor),
                 ];
+        }
+
+        private void copyXivgear(Gearset gearset)
+        {
+            try
+            {
+                ImGui.SetClipboardText(XivgearSheetExporter.Build(gearset, itemDataService));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, $"Failed to build an xivgear.app sheet for \"{gearset.Name}\".");
+            }
         }
     }
 }

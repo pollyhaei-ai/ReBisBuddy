@@ -7,7 +7,7 @@ using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.NativeWrapper;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using KamiToolKit.BaseTypes;
+using KamiToolKit;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;

@@ -184,12 +184,39 @@ namespace BisBuddy.Items
             catch (Exception ex)
             {
                 logger.Error(ex, "Failed to generate coffers using " + CsvLoader.ItemSupplementResourceName);
-                throw;
+                return Array.Empty<(uint ItemId, CofferSourceType SourceType)>().ToLookup(_ => 0u, pair => pair);
             }
+        }
+
+        private bool isEnglishCurrencyCategory(uint categoryRowId)
+        {
+            if (ItemUiCategorySheetEn is null)
+                return false;
+
+            if (!ItemUiCategorySheetEn.TryGetRow(categoryRowId, out var category))
+                return false;
+
+            return SeStringToString(category.Name) == "Currency";
         }
 
         private ILookup<uint, (List<uint> ItemIds, uint SourceShopId)> generateItemsPrerequisites()
         {
+            try
+            {
+                return generateItemsPrerequisitesCore();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Failed to generate shop prerequisites. Exchange prerequisites were skipped.");
+                return Array.Empty<(uint ItemId, List<uint> ShopCostIds, uint SourceShopId)>().ToLookup(row => row.ItemId, row => (row.ShopCostIds, row.SourceShopId));
+            }
+        }
+
+        private ILookup<uint, (List<uint> ItemIds, uint SourceShopId)> generateItemsPrerequisitesCore()
+        {
+            if (ItemUiCategorySheetEn is null)
+                logger.Error("English ItemUICategory sheet is unavailable. Currency items above the id cutoff cannot be excluded by their English category name.");
+
             var itemPrerequisiteOptions = new List<(uint ItemId, List<uint> ShopCostIds, uint SourceShopId)>();
             var itemExchangeShops = getRelevantShops(ShopSheet);
 
@@ -211,7 +238,7 @@ namespace BisBuddy.Items
                     var itemCosts = shopItem.ItemCosts
                         .Where(itemCost =>
                             itemCost.ItemCost.RowId > MaxCurrencyId
-                            && itemCost.ItemCost.Value.ItemUICategory.Value.Name != "Currency"
+                            && !isEnglishCurrencyCategory(itemCost.ItemCost.Value.ItemUICategory.RowId)
                             )
                         .SelectMany(itemCost =>
                             Enumerable.Repeat(

@@ -13,15 +13,16 @@ namespace BisBuddy.Gear.Prerequisites
         public IReadOnlyList<PrerequisiteNode> Prerequisites { get; private set; }
         public PrerequisiteNodeSourceType SourceType { get; private set; }
         public bool IsActive { get; set; }
+        private bool parentCollected;
         public bool ParentCollected {
-            get;
+            get => parentCollected;
             set
             {
-                if (field == value)
+                if (parentCollected == value)
                     return;
 
                 groups = getGroups();
-                field = value;
+                parentCollected = value;
             }
         }
         private List<(PrerequisiteNode Node, int Count)> groups;

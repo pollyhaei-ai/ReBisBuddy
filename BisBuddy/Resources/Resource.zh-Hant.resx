@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfigHighlightingSectionHeader" xml:space="preserve">
+    <value>視窗標示</value>
+  </data>
+  <data name="HighlightNeedGreedCheckbox" xml:space="preserve">
+    <value>需求／貪婪視窗</value>
+  </data>
+  <data name="HighlightNeedGreedHelp" xml:space="preserve">
+    <value>在需求／貪婪戰利品視窗標示配裝需要的物品</value>
+  </data>
+  <data name="HighlightShopExchangesCheckbox" xml:space="preserve">
+    <value>商店／交換</value>
+  </data>
+  <data name="HighlightShopExchangesHelp" xml:space="preserve">
+    <value>在 NPC 商店與物品交換視窗標示配裝需要的物品</value>
+  </data>
+  <data name="HighlightMateriaMeldingCheckbox" xml:space="preserve">
+    <value>魔晶石鑲嵌</value>
+  </data>
+  <data name="HighlightMateriaMeldingHelp" xml:space="preserve">
+    <value>在鑲嵌視窗標示需要鑲嵌的裝備，以及那些裝備需要的魔晶石</value>
+  </data>
+  <data name="HighlightInventoriesCheckbox" xml:space="preserve">
+    <value>物品欄</value>
+  </data>
+  <data name="HighlightInventoriesHelp" xml:space="preserve">
+    <value>在物品欄（背包、僱員、陸行鳥鞍囊）標示配裝需要的物品</value>
+  </data>
+  <data name="HighlightMarketboardCheckbox" xml:space="preserve">
+    <value>市場</value>
+  </data>
+  <data name="HighlightMarketboardHelp" xml:space="preserve">
+    <value>在市場標示配裝需要的物品</value>
+  </data>
+  <data name="HighlightItemTooltipsCheckbox" xml:space="preserve">
+    <value>物品提示</value>
+  </data>
+  <data name="HighlightItemTooltipsHelp" xml:space="preserve">
+    <value>滑鼠移到物品上時，在提示裡列出需要它的配裝</value>
+  </data>
+  <data name="ConfigInventorySectionHeader" xml:space="preserve">
+    <value>物品欄更新</value>
+  </data>
+  <data name="UpdateOnItemChangeCheckbox" xml:space="preserve">
+    <value>物品變動</value>
+  </data>
+  <data name="UpdateOnItemChangeHelp" xml:space="preserve">
+    <value>偵測到角色物品欄變動時，用物品欄裡的物品更新配裝（背包、裝備箱、已裝備）</value>
+  </data>
+  <data name="UpdateOnLoginLoadCheckbox" xml:space="preserve">
+    <value>登入／讀取</value>
+  </data>
+  <data name="UpdateOnLoginLoadHelp" xml:space="preserve">
+    <value>登入或讀取 {0} 時，用物品欄裡的物品更新配裝（背包、裝備箱、已裝備）</value>
+  </data>
+  <data name="ConfigWindowTitle" xml:space="preserve">
+    <value>{0} 設定</value>
+  </data>
+  <data name="ImportFailBase" xml:space="preserve">
+    <value>匯入失敗：</value>
+  </data>
+  <data name="ImportSuccess" xml:space="preserve">
+    <value>匯入成功：已匯入 {2} 套配裝</value>
+  </data>
+  <data name="ImportFailInternalError" xml:space="preserve">
+    <value>{0} 內部錯誤</value>
+  </data>
+  <data name="ImportInvalidUrl" xml:space="preserve">
+    <value>網址無效</value>
+  </data>
+  <data name="ImportNoGearsets" xml:space="preserve">
+    <value>找不到配裝</value>
+  </data>
+  <data name="ImportWindowTitle" xml:space="preserve">
+    <value>新增配裝</value>
+  </data>
+  <data name="ImportGearsetLoading" xml:space="preserve">
+    <value>載入中……</value>
+  </data>
+  <data name="MeldWindowHeader" xml:space="preserve">
+    <value>選擇魔晶石鑲嵌</value>
+  </data>
+  <data name="NewGearsetButton" xml:space="preserve">
+    <value>新增配裝</value>
+  </data>
+  <data name="ImportGearsetTooltip" xml:space="preserve">
+    <value>從 {0} 匯入新的配裝</value>
+  </data>
+  <data name="NewGearsetTooltipMaxGearsets" xml:space="preserve">
+    <value>最多 {0} 套配裝</value>
+  </data>
+  <data name="SyncInventoryButton" xml:space="preserve">
+    <value>同步物品欄</value>
+  </data>
+  <data name="SyncInventoryTooltip" xml:space="preserve">
+    <value>用物品欄裡的物品更新配裝</value>
+  </data>
+  <data name="InventoryScanLoading" xml:space="preserve">
+    <value>載入中……</value>
+  </data>
+  <data name="InventoryScanUpdated" xml:space="preserve">
+    <value>已更新 {0} 件裝備</value>
+  </data>
+  <data name="OpenConfigTooltip" xml:space="preserve">
+    <value>開啟設定</value>
+  </data>
+  <data name="NoGearsetsText" xml:space="preserve">
+    <value>還沒有配裝。新增一套以上即可開始</value>
+  </data>
+  <data name="GearsetsTabLoggedOutText" xml:space="preserve">
+    <value>登入後才能檢視或新增配裝</value>
+  </data>
+  <data name="ManuallyCollectedTooltip" xml:space="preserve">
+    <value>收集狀態已鎖定。同步物品欄不會取消收集</value>
+  </data>
+  <data name="AutomaticallyCollectedTooltip" xml:space="preserve">
+    <value>標成尚未收集</value>
+  </data>
+  <data name="UncollectedTooltip" xml:space="preserve">
+    <value>鎖定為已收集</value>
+  </data>
+  <data name="EnabledGearsetTooltip" xml:space="preserve">
+    <value>停用配裝</value>
+  </data>
+  <data name="DisabledGearsetTooltip" xml:space="preserve">
+    <value>啟用配裝</value>
+  </data>
+  <data name="DeleteGearsetTooltipQuick" xml:space="preserve">
+    <value>刪除這套配裝。點一下即可快速刪除</value>
+  </data>
+  <data name="DeleteGearsetTooltip" xml:space="preserve">
+    <value>刪除 {0}</value>
+  </data>
+  <data name="DeleteGearsetPopupTitle" xml:space="preserve">
+    <value>要刪除配裝嗎？</value>
+  </data>
+  <data name="DeleteGearsetConfirmButton" xml:space="preserve">
+    <value>是，刪除</value>
+  </data>
+  <data name="DeleteGearsetConfirmTooltip" xml:space="preserve">
+    <value>刪除後無法復原！</value>
+  </data>
+  <data name="AllCollectedTooltip" xml:space="preserve">
+    <value>全部標成尚未收集</value>
+  </data>
+  <data name="AllUncollectedTooltip" xml:space="preserve">
+    <value>全部鎖定為已收集</value>
+  </data>
+  <data name="RenameGearsetTooltip" xml:space="preserve">
+    <value>重新命名配裝</value>
+  </data>
+  <data name="GearsetUrlButton" xml:space="preserve">
+    <value>連結</value>
+  </data>
+  <data name="GearsetUrlTooltip" xml:space="preserve">
+    <value>將 {0} 連結複製到剪貼簿</value>
+  </data>
+  <data name="GearsetJsonButton" xml:space="preserve">
+    <value>JSON</value>
+  </data>
+  <data name="GearsetJsonTooltip" xml:space="preserve">
+    <value>將配裝 JSON 複製到剪貼簿</value>
+  </data>
+  <data name="MeldVerb" xml:space="preserve">
+    <value>鑲嵌</value>
+  </data>
+  <data name="UnmeldVerb" xml:space="preserve">
+    <value>卸下</value>
+  </data>
+  <data name="UpdateOnPluginChangesCheckbox" xml:space="preserve">
+    <value>插件變更</value>
+  </data>
+  <data name="UpdateOnPluginChangesHelp" xml:space="preserve">
+    <value>更新 {0} 的配裝或設定時，用物品欄裡的物品更新配裝（背包、裝備箱、已裝備）</value>
+  </data>
+  <data name="StrictMateriaMatchingCheckbox" xml:space="preserve">
+    <value>嚴格比對魔晶石</value>
+  </data>
+  <data name="StrictMateriaMatchingHelp" xml:space="preserve">
+    <value>自動分配是否把鑲了不同魔晶石的同一件裝備視為不同物品。
+
+開啟：每筆裝備依魔晶石視為獨立項目。同一件裝備若有多筆、魔晶石不同，一件物品欄物品只能滿足其中一筆。
+關閉：自動分配忽略魔晶石差異，只看裝備本身。一件物品欄物品可以同時滿足同一件裝備的多筆記錄，即使魔晶石不同。
+
+範例
+物品欄：1x Archeo Kingdom Ring of Aiming [CRT]
+配裝 1：1x Archeo Kingdom Ring of Aiming [CRT, DET]
+配裝 2：1x Archeo Kingdom Ring of Aiming [DET, DET]
+
+開啟：配裝 1 完成，配裝 2 未完成
+關閉：配裝 1 完成，配裝 2 完成</value>
+  </data>
+  <data name="HighlightColorButtonTooltip" xml:space="preserve">
+    <value>預設標示顏色，或顏色互相衝突時使用的顏色</value>
+  </data>
+  <data name="HighlightColorButtonLabel" xml:space="preserve">
+    <value>預設標示顏色</value>
+  </data>
+  <data name="HighlightColorHelp" xml:space="preserve">
+    <value>預設用來標示所需物品的顏色；若一件物品被不同顏色的配裝需要，也使用這個顏色。
+
+用透明度調整物品與圖示的標示強度。
+清單選單的標示不受影響。</value>
+  </data>
+  <data name="GearpieceLockedDisabledTooltip" xml:space="preserve">
+    <value>{0}
+右鍵並鎖定裝備後才能改變狀態</value>
+  </data>
+  <data name="SearchInventoryForItemTooltip" xml:space="preserve">
+    <value>在物品欄搜尋 {0}</value>
+  </data>
+  <data name="PrerequisiteTooltipBase" xml:space="preserve">
+    <value>左鍵：{0}
+右鍵：在物品欄搜尋</value>
+  </data>
+  <data name="ImportXivgearTooltip" xml:space="preserve">
+    <value>從 Xivgear.app 匯出的配裝表連結
+例如：https://xivgear.app/?page=sl%%7C9ee61d69-7daa-41bd-9c28-8a0f0055f90f</value>
+  </data>
+  <data name="ImportEtroTooltip" xml:space="preserve">
+    <value>Etro.gg 的配裝連結
+例如：https://etro.gg/gearset/4b5f4ed3-4832-4fd5-b134-3429ea8caf37</value>
+  </data>
+  <data name="ImportJsonTooltip" xml:space="preserve">
+    <value>從這個插件既有配裝匯出的 JSON
+例如：{"Id":"50399235-5794-4ccb-906f-ddd9...</value>
+  </data>
+  <data name="ImportTeamcraftTooltip" xml:space="preserve">
+    <value>從 Teamcraft 匯出的純文字配裝
+例如：
+**Everseeker's Pickaxe HQ**
+        
+- Gatherer's Guile Materia X
+
+**Everseeker's Coat of Gath...</value>
+  </data>
+  <data name="ImportGearsetButton" xml:space="preserve">
+    <value>從 {0} 匯入</value>
+  </data>
+  <data name="ImportFailInvalidInput" xml:space="preserve">
+    <value>{0} {1} 的輸入無效</value>
+  </data>
+  <data name="ImportFailInvalidResponse" xml:space="preserve">
+    <value>{0} 收到無效的回應</value>
+  </data>
+  <data name="ImportFailNoGearsets" xml:space="preserve">
+    <value>{0} 沒有找到或匯入配裝</value>
+  </data>
+  <data name="ImportFailTooManyGearsets" xml:space="preserve">
+    <value>{0} 匯入後會超過配裝上限</value>
+  </data>
+  <data name="NewGearsetTooltip" xml:space="preserve">
+    <value>匯入新的配裝</value>
+  </data>
+  <data name="GearsetStringButton" xml:space="preserve">
+    <value>Teamcraft</value>
+  </data>
+  <data name="GearsetStringTooltip" xml:space="preserve">
+    <value>將 {0} 文字複製到剪貼簿</value>
+  </data>
+  <data name="HighlightNextMateriaCheckbox" xml:space="preserve">
+    <value>只標示下一顆</value>
+  </data>
+  <data name="HighlightNextMateriaHelp" xml:space="preserve">
+    <value>鑲嵌時只標示下一顆魔晶石，或標示所有可鑲嵌的魔晶石。進階鑲嵌時很有用。
+注意：若裝備上已有不該存在的魔晶石，標示會不準。
+
+開啟：只標示這件裝備下一顆要鑲的魔晶石
+關閉：在鑲嵌視窗標示這件裝備需要的全部魔晶石
+
+範例
+裝備需要：[+36 CRT, +36 DET]
+
+開啟：標示 +36 CRT
+關閉：標示 +36 CRT 與 +36 DET</value>
+  </data>
+  <data name="HighlightCollectedItemMateriaCheckbox" xml:space="preserve">
+    <value>僅已收集</value>
+  </data>
+  <data name="HighlightPrerequisiteMateriaCheckbox" xml:space="preserve">
+    <value>鑲嵌前置物品</value>
+  </data>
+  <data name="HighlightPrerequisiteMateriaHelp" xml:space="preserve">
+    <value>前置物品是否要當成最終裝備的鑲嵌目標，使用該裝備列出的魔晶石。
+
+開啟：鑲嵌時會標示前置物品，並要求最終裝備需要的魔晶石。
+尚未取得最終裝備時，清單裡的裝備會顯示前置物品的鑲嵌狀態。
+關閉：鑲嵌時只標示主要裝備。
+
+範例
+裝備（尚未取得）：Augmented Historia Ring of Casting [+54 DET, +54 CRT]
+前置（已取得）：Historia Ring of Casting
+
+開啟：鑲嵌時會標示 Historia Ring of Casting，並標示 [+54 DET, +54 CRT]。
+若 Historia Ring of Casting 已鑲 +54 DET，這筆裝備會把 +54 DET 顯示為已鑲嵌。
+關閉：不標示 Historia Ring of Casting。</value>
+  </data>
+  <data name="HighlightUncollectedItemMateriaCheckbox" xml:space="preserve">
+    <value>未收集裝備的魔晶石</value>
+  </data>
+  <data name="HighlightUncollectedItemMateriaHelp" xml:space="preserve">
+    <value>尚未收集的裝備所需要的魔晶石是否也要標示。
+
+開啟：不論裝備是否已收集，都會標示它需要的魔晶石
+關閉：裝備尚未收集時，不標示它的魔晶石</value>
+  </data>
+  <data name="BrightListItemHighlightingCheckbox" xml:space="preserve">
+    <value>清單項目高亮度</value>
+  </data>
+  <data name="BrightListItemHighlightingHelp" xml:space="preserve">
+    <value>把清單項目的標示不透明度鎖在最高，提高對比。若某些自訂介面顯示異常，可以關閉</value>
+  </data>
+  <data name="GearsetHighlightColorLabel" xml:space="preserve">
+    <value>選擇顏色</value>
+  </data>
+  <data name="GearsetHighlightColorButtonTooltip" xml:space="preserve">
+    <value>這套配裝所需物品的標示顏色</value>
+  </data>
+  <data name="GearsetDefaultColorCheckbox" xml:space="preserve">
+    <value>使用預設</value>
+  </data>
+  <data name="GearsetDefaultColorTooltip" xml:space="preserve">
+    <value>使用設定裡的預設標示顏色，或為這套配裝指定專用顏色</value>
+  </data>
+  <data name="ConfigGeneralSectionHeader" xml:space="preserve">
+    <value>一般設定</value>
+  </data>
+  <data name="GeneralConfigurationHighlightAppearanceCategory" xml:space="preserve">
+    <value>標示外觀</value>
+  </data>
+  <data name="GeneralConfigurationMiscellaneousCategory" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="MainChatCommandHelpMessage" xml:space="preserve">
+    <value>開啟插件主視窗{0}</value>
+  </data>
+  <data name="AliasChatCommandHelpMessage" xml:space="preserve">
+    <value>{0} 的別名</value>
+  </data>
+  <data name="PluginDisplayName" xml:space="preserve">
+    <value>BISBuddy</value>
+  </data>
+  <data name="UserGearsetsTabName" xml:space="preserve">
+    <value>配裝</value>
+  </data>
+  <data name="ItemPlannerTabName" xml:space="preserve">
+    <value>每週規劃</value>
+  </data>
+  <data name="ItemExchangesTabName" xml:space="preserve">
+    <value>物品欄</value>
+  </data>
+  <data name="ItemTrackerTabName" xml:space="preserve">
+    <value>物品追蹤</value>
+  </data>
+  <data name="ConfigTabName" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="GearsetSortName" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="GearsetSortJob" xml:space="preserve">
+    <value>職業</value>
+  </data>
+  <data name="GearsetSortImportDate" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="GearsetSortPriority" xml:space="preserve">
+    <value>優先順序</value>
+  </data>
+  <data name="GearsetSortActive" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="ImportXivgearName" xml:space="preserve">
+    <value>Xivgear</value>
+  </data>
+  <data name="ImportEtroName" xml:space="preserve">
+    <value>Etro</value>
+  </data>
+  <data name="ImportJsonName" xml:space="preserve">
+    <value>JSON</value>
+  </data>
+  <data name="ImportTeamcraftName" xml:space="preserve">
+    <value>Teamcraft</value>
+  </data>
+  <data name="ImportFailNoResponse" xml:space="preserve">
+    <value>{0} 伺服器沒有回應</value>
+  </data>
+  <data name="ImportFailNotLoggedIn" xml:space="preserve">
+    <value>{0} 必須登入才能匯入配裝</value>
+  </data>
+  <data name="ImportGearsetLoggedOut" xml:space="preserve">
+    <value>登入後才能匯入配裝</value>
+  </data>
+  <data name="UnknownClassJobName" xml:space="preserve">
+    <value>未知職業</value>
+  </data>
+  <data name="UnknownClassJobAbbreviation" xml:space="preserve">
+    <value>???</value>
+  </data>
+  <data name="DefaultNewGearsetName" xml:space="preserve">
+    <value>新配裝</value>
+  </data>
+  <data name="ConfigUiThemeSectionHeader" xml:space="preserve">
+    <value>插件樣式</value>
+  </data>
+  <data name="ResetUiThemeButton" xml:space="preserve">
+    <value>重設顏色與樣式</value>
+  </data>
+  <data name="ResetUiThemeTooltip" xml:space="preserve">
+    <value>把插件樣式與顏色重設為預設值</value>
+  </data>
+  <data name="MateriaAbbrevDirectHitRate" xml:space="preserve">
+    <value>直擊</value>
+  </data>
+  <data name="MateriaAbbrevCriticalHit" xml:space="preserve">
+    <value>暴擊</value>
+  </data>
+  <data name="MateriaAbbrevDetermination" xml:space="preserve">
+    <value>信念</value>
+  </data>
+  <data name="MateriaAbbrevPiety" xml:space="preserve">
+    <value>信仰</value>
+  </data>
+  <data name="MateriaAbbrevTenacity" xml:space="preserve">
+    <value>堅韌</value>
+  </data>
+  <data name="MateriaAbbrevSkillSpeed" xml:space="preserve">
+    <value>技速</value>
+  </data>
+  <data name="MateriaAbbrevSpellSpeed" xml:space="preserve">
+    <value>詠唱</value>
+  </data>
+  <data name="MateriaAbbrevGathering" xml:space="preserve">
+    <value>獲得</value>
+  </data>
+  <data name="MateriaAbbrevPerception" xml:space="preserve">
+    <value>鑑別</value>
+  </data>
+  <data name="MateriaAbbrevGatheringPoints" xml:space="preserve">
+    <value>GP</value>
+  </data>
+  <data name="MateriaAbbrevCraftsmanship" xml:space="preserve">
+    <value>作業</value>
+  </data>
+  <data name="MateriaAbbrevCraftingPoints" xml:space="preserve">
+    <value>CP</value>
+  </data>
+  <data name="MateriaAbbrevControl" xml:space="preserve">
+    <value>加工</value>
+  </data>
+  <data name="UserGearsetsTabNoGearsetsTextNavigation" xml:space="preserve">
+    <value>新增配裝</value>
+  </data>
+  <data name="CommandDescriptionAddGearset" xml:space="preserve">
+    <value>新增一套配裝</value>
+  </data>
+  <data name="CommandDescriptionOpenConfig" xml:space="preserve">
+    <value>開啟插件設定</value>
+  </data>
+  <data name="UserGearsetsTabNoGearsetsTextPanel" xml:space="preserve">
+    <value>配裝詳細資料會顯示在這裡</value>
+  </data>
+  <data name="HighlightCollectedInInventoryHelp" xml:space="preserve">
+    <value>是否在玩家物品欄（背包、僱員、陸行鳥鞍囊）標示已標記為收集的物品。</value>
+  </data>
+  <data name="HighlightCollectedInInventoryCheckbox" xml:space="preserve">
+    <value>包含已收集</value>
+  </data>
+  <data name="ObtainedCompleteHelp" xml:space="preserve">
+    <value>已收集物品</value>
+  </data>
+  <data name="ObtainedPartialHelp" xml:space="preserve">
+    <value>已收集物品，魔晶石尚未齊</value>
+  </data>
+  <data name="ObtainableHelp" xml:space="preserve">
+    <value>可用前置物品取得</value>
+  </data>
+  <data name="NotObtainableHelp" xml:space="preserve">
+    <value>尚未收集</value>
+  </data>
+  <data name="CollectionStatusLockTooltip" xml:space="preserve">
+    <value>收集狀態已鎖定</value>
+  </data>
+  <data name="AdvancedMateriaMeldTooltip" xml:space="preserve">
+    <value>[進階] </value>
+  </data>
+  <data name="PrerequisiteGearpieceHeader" xml:space="preserve">
+    <value>前置物品</value>
+  </data>
+  <data name="DeleteGearsetDisabledTooltip" xml:space="preserve">
+    <value>按住 Shift 並點擊以刪除 {0}</value>
+  </data>
+  <data name="DeleteGearsetTooltipGearsetNameDummy" xml:space="preserve">
+    <value>選取的配裝</value>
+  </data>
+  <data name="GearsetGearpiecesTabName" xml:space="preserve">
+    <value>裝備</value>
+  </data>
+  <data name="GearsetPropertiesTabName" xml:space="preserve">
+    <value>屬性</value>
+  </data>
+  <data name="ContextMenuCopyJson" xml:space="preserve">
+    <value>複製 JSON</value>
+  </data>
+  <data name="ContextMenuDeleteGearset" xml:space="preserve">
+    <value>刪除配裝</value>
+  </data>
+  <data name="ContextMenuLockUncollected" xml:space="preserve">
+    <value>鎖定為未收集</value>
+  </data>
+  <data name="ContextMenuLockCollected" xml:space="preserve">
+    <value>鎖定為已收集</value>
+  </data>
+  <data name="ContextMenuUnlock" xml:space="preserve">
+    <value>解除鎖定</value>
+  </data>
+  <data name="ContextMenuSearchInventory" xml:space="preserve">
+    <value>在物品欄搜尋</value>
+  </data>
+  <data name="GearpieceNoSubItemsTooltip" xml:space="preserve">
+    <value>沒有魔晶石／前置物品</value>
+  </data>
+  <data name="MateriaMeldTooltip" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="CollectVerb" xml:space="preserve">
+    <value>收集</value>
+  </data>
+  <data name="UncollectVerb" xml:space="preserve">
+    <value>取消收集</value>
+  </data>
+  <data name="DisabledPrerequisiteTooltip" xml:space="preserve">
+    <value>{0} 已停用，請在切換項目中設定</value>
+  </data>
+  <data name="PrerequisiteOrNodeSettingsTabName" xml:space="preserve">
+    <value>切換</value>
+  </data>
+  <data name="PrerequisiteOrNodeToggleTooltip" xml:space="preserve">
+    <value>是否把這種取得方式算進上層物品</value>
+  </data>
+  <data name="CollectionStatusLockedTooltipPrefix" xml:space="preserve">
+    <value>[已鎖定] {0}</value>
+  </data>
+  <data name="ConfigDebugSectionHeader" xml:space="preserve">
+    <value>除錯</value>
+  </data>
+  <data name="OpenExternalConfigWindowTooltip" xml:space="preserve">
+    <value>獨立設定視窗</value>
+  </data>
+  <data name="DebugTabName" xml:space="preserve">
+    <value>除錯</value>
+  </data>
+  <data name="UiThemeConfigColorsSectionHeader" xml:space="preserve">
+    <value>配裝顏色</value>
+  </data>
+  <data name="UiThemeConfigStylesSectionHeader" xml:space="preserve">
+    <value>配裝樣式</value>
+  </data>
+  <data name="ShowGearsetColorAccentFlagLabel" xml:space="preserve">
+    <value>顯示配裝色條</value>
+  </data>
+  <data name="ShowGearsetColorAccentFlagTooltip" xml:space="preserve">
+    <value>是否在配裝分頁與標題顯示該配裝標示色的漸層</value>
+  </data>
+  <data name="UiThemeConfigResetsSectionHeader" xml:space="preserve">
+    <value>預設值</value>
+  </data>
+  <data name="UiThemeColorMateriaSlotNormalLabel" xml:space="preserve">
+    <value>魔晶石孔（一般）</value>
+  </data>
+  <data name="UiThemeColorMateriaSlotAdvancedLabel" xml:space="preserve">
+    <value>魔晶石孔（進階）</value>
+  </data>
+  <data name="UiThemeColorGearpieceButton" xml:space="preserve">
+    <value>裝備按鈕</value>
+  </data>
+  <data name="UiThemeColorGearpieceButtonHovered" xml:space="preserve">
+    <value>裝備按鈕（滑過）</value>
+  </data>
+  <data name="UiThemeColorGearpieceButtonActive" xml:space="preserve">
+    <value>裝備按鈕（按下）</value>
+  </data>
+  <data name="EnabledGearsetVerb" xml:space="preserve">
+    <value>已啟用</value>
+  </data>
+  <data name="DisabledGearsetVerb" xml:space="preserve">
+    <value>已停用</value>
+  </data>
+  <data name="GearsetPropertiesStatusRowLabel" xml:space="preserve">
+    <value>配裝狀態</value>
+  </data>
+  <data name="GearsetPropertiesColorRowLabel" xml:space="preserve">
+    <value>標示顏色</value>
+  </data>
+  <data name="GearsetPropertiesSourceTypeRowLabel" xml:space="preserve">
+    <value>匯入來源</value>
+  </data>
+  <data name="GearsetPropertiesImportDateRowLabel" xml:space="preserve">
+    <value>匯入日期</value>
+  </data>
+  <data name="GearsetPropertiesDataRowLabel" xml:space="preserve">
+    <value>資料匯出</value>
+  </data>
+  <data name="ContextMenuLockAllUncollected" xml:space="preserve">
+    <value>全部鎖定為未收集</value>
+  </data>
+  <data name="ContextMenuLockAllCollected" xml:space="preserve">
+    <value>全部鎖定為已收集</value>
+  </data>
+  <data name="ContextMenuUnlockAll" xml:space="preserve">
+    <value>全部解除鎖定</value>
+  </data>
+  <data name="DebugItemRequirementsTab" xml:space="preserve">
+    <value>物品需求</value>
+  </data>
+  <data name="DebugSolverResultsTab" xml:space="preserve">
+    <value>物品分配結果</value>
+  </data>
+  <data name="DebugAddonsTab" xml:space="preserve">
+    <value>插件視窗標示</value>
+  </data>
+  <data name="DebugPrerequisitesTab" xml:space="preserve">
+    <value>物品前置</value>
+  </data>
+  <data name="DebugFrameworkThreadBehaviorIgnoreName" xml:space="preserve">
+    <value>不處理</value>
+  </data>
+  <data name="DebugFrameworkThreadBehaviorWarningName" xml:space="preserve">
+    <value>記錄警告</value>
+  </data>
+  <data name="DebugFrameworkThreadBehaviorAssertName" xml:space="preserve">
+    <value>擲出錯誤</value>
+  </data>
+  <data name="DebugFrameworkThreadBehaviorIgnoreTooltip" xml:space="preserve">
+    <value>忽略問題並繼續。只在警告洗版、而且問題已經回報時使用</value>
+  </data>
+  <data name="DebugFrameworkThreadBehaviorWarningTooltip" xml:space="preserve">
+    <value>把警告寫到主控台。這是預設行為</value>
+  </data>
+  <data name="DebugFrameworkThreadBehaviorAssertTooltip" xml:space="preserve">
+    <value>擲出例外。警告：遇到錯誤時可能讓功能中斷</value>
+  </data>
+  <data name="CommandDescriptionOpenDebug" xml:space="preserve">
+    <value>若已啟用除錯，開啟插件除錯視窗</value>
+  </data>
+  <data name="ContextMenuCopyString" xml:space="preserve">
+    <value>複製 {0} 文字</value>
+  </data>
+  <data name="ContextMenuCopyUrl" xml:space="preserve">
+    <value>複製 {0} 連結</value>
+  </data>
+  <data name="GearpieceCollectionStatusUnlockedSuffix" xml:space="preserve">
+    <value>{0}。右鍵可鎖定</value>
+  </data>
+  <data name="NotObtainablePartialHelp" xml:space="preserve">
+    <value>已收集部分前置物品</value>
+  </data>
+  <data name="MateriaCountsTabName" xml:space="preserve">
+    <value>魔晶石</value>
+  </data>
+  <data name="MateriaCountsMateriaNameHeader" xml:space="preserve">
+    <value>魔晶石名稱</value>
+  </data>
+  <data name="MateriaCountsStatHeader" xml:space="preserve">
+    <value>能力值</value>
+  </data>
+  <data name="MateriaCountsSlotsHeader" xml:space="preserve">
+    <value>孔位</value>
+  </data>
+  <data name="MateriaCountsNeededHeader" xml:space="preserve">
+    <value>需要</value>
+  </data>
+  <data name="MateriaCountsInventoryHeader" xml:space="preserve">
+    <value>物品欄</value>
+  </data>
+  <data name="MateriaCountsRemainingHeader" xml:space="preserve">
+    <value>剩餘</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboTooltip" xml:space="preserve">
+    <value>要檢查哪些配裝尚未鑲滿的魔晶石</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboAllOption" xml:space="preserve">
+    <value>全選</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboNoneOption" xml:space="preserve">
+    <value>取消全選</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboNoneLoadedPreview" xml:space="preserve">
+    <value>沒有載入配裝</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboNoneSelectedPreview" xml:space="preserve">
+    <value>沒有選擇配裝</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboAllSelectedPreview" xml:space="preserve">
+    <value>已選擇全部配裝</value>
+  </data>
+  <data name="MateriaCountsGearsetsComboCountSelectedPreview" xml:space="preserve">
+    <value>已選擇 {0} 套配裝</value>
+  </data>
+  <data name="MateriaCountsMeldConfidenceTooltip" xml:space="preserve">
+    <value>以列出的魔晶石數量，所有選取孔位都鑲嵌成功的機率是 {0}
+反過來說，有 {1} 的機率會需要比列出數量更多的魔晶石才能鑲滿選取的孔位
+按住 CTRL 並點擊可輸入數字</value>
+  </data>
+  <data name="MateriaCountsMeldConfidenceSliderLabel" xml:space="preserve">
+    <value>鑲嵌信心</value>
+  </data>
+  <data name="MateriaCountsNoUnmeldedMateria" xml:space="preserve">
+    <value>所選配裝的魔晶石都已鑲嵌</value>
+  </data>
+  <data name="MateriaCountsNoSelectedGearsets" xml:space="preserve">
+    <value>選擇配裝以檢視尚未鑲嵌的魔晶石</value>
+  </data>
+  <data name="MateriaCountsOvercountWarningText" xml:space="preserve">
+    <value>警告：多套配裝使用同一件裝備時，需要的魔晶石可能被重複計算</value>
+  </data>
+  <data name="MateriaCountsOvercountWarningTooltip" xml:space="preserve">
+    <value>若同一件裝備出現在一套以上的配裝，這份清單會把魔晶石算兩次，即使遊戲裡一件裝備可以共用。
+若要一次買齊，共用裝備的配裝只需要買其中一套的數量。
+
+共用裝備的配裝：
+{0}</value>
+  </data>
+  <data name="MateriaCountsSearchInventory" xml:space="preserve">
+    <value>在物品欄搜尋 {0}</value>
+  </data>
+  <data name="MateriaCountsHelpPopupText" xml:space="preserve">
+    <value>這個分頁用來在進階鑲嵌前準備足夠的魔晶石。
+
+{0} 會用所選配裝每個未鑲孔位的成功率，
+計算要成功鑲滿每個孔位需要多少魔晶石。
+
+使用方式
+1. 選擇想要鑲嵌的配裝
+2. 設定想要的鑲嵌信心百分比（目前是 {1}）。數值愈高，
+需要的魔晶石愈多，但鑲嵌失敗、還得再準備魔晶石的機率愈低（目前是 {2}）
+3. 收集「需要」欄列出的數量。收集時，這個頁面會追蹤
+個人物品欄裡的數量（不含陸行鳥鞍囊與僱員）
+4. 鑲嵌所選配裝裡尚未鑲嵌的裝備。鑲嵌完成、魔晶石被消耗後，表格會更新。</value>
+  </data>
+  <data name="AllowGearpiecesAsPrerequisitesCheckbox" xml:space="preserve">
+    <value>把裝備也當成前置物品</value>
+  </data>
+  <data name="AllowGearpiecesAsPrerequisitesHelp" xml:space="preserve">
+    <value>已分配給某套配裝的裝備，是否也能分配給另一套當前置物品。同一職業同時有畢業裝與進度裝時很有用。</value>
+  </data>
+  <data name="ContextMenuCopyXivgear" xml:space="preserve">
+    <value>複製到 Xivgear</value>
+  </data>
+  <data name="GearsetXivgearButton" xml:space="preserve">
+    <value>Xivgear</value>
+  </data>
+  <data name="GearsetXivgearTooltip" xml:space="preserve">
+    <value>複製 xivgear.app 可匯入的配裝表。請貼到 https://xivgear.app/?page=importsheet 。物品以 ID 匯出，職業縮寫為英文，因此繁體中文客戶端也能匯入。</value>
+  </data>
+  <data name="MeldPlanWindowTitle" xml:space="preserve">
+    <value>鑲嵌方案</value>
+  </data>
+</root>

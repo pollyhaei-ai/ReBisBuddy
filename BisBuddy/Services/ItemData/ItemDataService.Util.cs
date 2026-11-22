@@ -66,20 +66,61 @@ namespace BisBuddy.Items
 
         public uint GetItemIdByName(string name)
         {
-            // return cached value
             if (NameToId.TryGetValue(name, out var value)) return value;
 
-            var itemIsHq = name.Contains(Constants.HqIcon);
-            if (itemIsHq) name = name[..^2]; // remove hq icon (remove hq icon and space)
+            var lookup = name;
+            var itemIsHq = lookup.Contains(Constants.HqIcon);
+            if (itemIsHq && lookup.Length >= 2)
+                lookup = lookup[..^2];
 
-            // get from item sheet if not cached
-            var id = ItemSheet.FirstOrDefault(item => SeStringToString(item.Name) == name).RowId;
+            // Traditional Chinese first, then English. Item id is the canonical key.
+            var id = findItemIdByName(ItemSheet, lookup);
+            if (id == 0 && ItemSheetEn is not null)
+                id = findItemIdByName(ItemSheetEn, lookup);
 
-            // convert to HQ id if item is HQ
-            if (itemIsHq) id += Constants.ItemIdHqOffset;
+            if (itemIsHq && id != 0)
+                id += Constants.ItemIdHqOffset;
 
             NameToId[name] = id;
             return id;
+        }
+
+        private uint findItemIdByName(ExcelSheet<Item> sheet, string name)
+        {
+            foreach (var item in sheet)
+            {
+                if (SeStringToString(item.Name) == name)
+                    return item.RowId;
+            }
+
+            return 0;
+        }
+
+        public bool ItemCanBeHq(uint itemId)
+        {
+            if (!tryGetItemRowById(itemId, out var item))
+                return false;
+
+            return item.CanBeHq;
+        }
+
+        public int GetItemEquipLevel(uint itemId)
+        {
+            if (!tryGetItemRowById(itemId, out var item))
+                return 0;
+
+            return item.LevelEquip;
+        }
+
+        public string GetEnglishClassJobAbbreviation(uint classJobId)
+        {
+            if (classJobId == 0 || ClassJobSheetEn is null)
+                return string.Empty;
+
+            if (!ClassJobSheetEn.TryGetRow(classJobId, out var row))
+                return string.Empty;
+
+            return SeStringToString(row.Abbreviation);
         }
 
         public string GetShopNameById(uint shopId)
@@ -380,25 +421,30 @@ namespace BisBuddy.Items
                 return value;
 
             var materiaName = GetItemNameById(materiaItemId);
+            var materiaRowId = materiaItemId >= Constants.ItemIdHqOffset
+                ? materiaItemId - Constants.ItemIdHqOffset
+                : materiaItemId;
 
             var maxMateriaRow = 40;
             SheetMateria? materiaRow = null;
             var materiaCol = -1;
 
+            // Match the materia item by row id. Name comparison follows the client language and
+            // fails when the Item sheet and the Materia sheet are not the same language.
             for (var i = 0; i < maxMateriaRow; i++)
             {
                 var row = Materia.GetRowAt(i);
                 for (var j = 0; j < 16; j++)
                 {
                     var col = row.Item[j];
-                    if (SeStringToString(col.Value.Name) == materiaName)
+                    if (col.RowId == materiaRowId && materiaRowId != 0)
                     {
                         materiaRow = row;
                         materiaCol = j;
                         break;
                     }
                 }
-                if (materiaCol > 0) break;
+                if (materiaCol >= 0) break;
             }
 
             if (materiaRow is not SheetMateria materiaRowValue || materiaCol < 0)
@@ -495,28 +541,31 @@ namespace BisBuddy.Items
 
         public ClassJobInfo GetClassJobInfoByEnAbbreviation(string abbrevation, ClientLanguage? language = null)
         {
+            _ = language;
+
+            if (ClassJobSheetEn is null)
+            {
+                logger.Error($"English ClassJob sheet is unavailable. Abbreviation \"{abbrevation}\" was not resolved.");
+                return nullJobInfo;
+            }
+
             foreach (var row in ClassJobSheetEn)
             {
-                var rowAbbrev = row.Abbreviation.ExtractText();
-                if (rowAbbrev.Equals(abbrevation, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    var displayRow = row;
+                var rowAbbrev = SeStringToString(row.Abbreviation);
+                if (!rowAbbrev.Equals(abbrevation, StringComparison.InvariantCultureIgnoreCase))
+                    continue;
 
-                    // try to use localized version for name/abbreviation
-                    if (
-                        (language ?? dataManager.Language) != ClientLanguage.English
-                        && ClassJobSheet.TryGetRow(row.RowId, out var localLangRow)
-                    )
-                        displayRow = localLangRow;
+                var displayRow = ClassJobSheet.TryGetRow(row.RowId, out var localLangRow)
+                    ? localLangRow
+                    : row;
 
-                    logger.Verbose($"name: {displayRow.Name.ExtractText()}, abbrev: {displayRow.Abbreviation.ExtractText()}");
+                logger.Verbose($"name: {SeStringToString(displayRow.Name)}, abbrev: {SeStringToString(displayRow.Abbreviation)}");
 
-                    return new(
-                        classJobId: row.RowId,
-                        name: getTitleCaseClassJobName(row),
-                        abbreviation: displayRow.Abbreviation.ExtractText()
-                    );
-                }
+                return new(
+                    classJobId: row.RowId,
+                    name: displayJobName(displayRow),
+                    abbreviation: SeStringToString(displayRow.Abbreviation)
+                );
             }
 
             return nullJobInfo;
@@ -529,22 +578,26 @@ namespace BisBuddy.Items
 
             return new(
                 classJobId: row.RowId,
-                name: getTitleCaseClassJobName(row),
-                abbreviation: row.Abbreviation.ExtractText()
+                name: displayJobName(row),
+                abbreviation: SeStringToString(row.Abbreviation)
                 );
         }
 
-        private string getTitleCaseClassJobName(ClassJob classJobRow) =>
-            CultureInfo
+        private string displayJobName(ClassJob classJobRow)
+        {
+            var text = SeStringToString(classJobRow.Name);
+            if (text.Any(c => c > 127))
+                return text;
+
+            return CultureInfo
                 .CurrentCulture
                 .TextInfo
-                .ToTitleCase(
-                    classJobRow.Name.ExtractText().ToLower(CultureInfo.CurrentCulture)
-                );
+                .ToTitleCase(text.ToLower(CultureInfo.CurrentCulture));
+        }
 
         private int classJobCount =>
             // +1 because "no job" is not included in the count
-            ClassJobSheetEn.Count(c => !c.Name.ExtractText().IsNullOrEmpty()) + 1;
+            (ClassJobSheetEn ?? ClassJobSheet).Count(c => !c.Name.ExtractText().IsNullOrEmpty()) + 1;
 
         private ClassJobInfo nullJobInfo => new(
             classJobId: 0,
@@ -555,18 +608,46 @@ namespace BisBuddy.Items
 
         public IEnumerable<uint> FindClassJobIdUsers(IEnumerable<uint> itemIds)
         {
-            var allClassJobIds = ClassJobSheetEn
+            var jobSheet = ClassJobSheetEn ?? ClassJobSheet;
+            var allClassJobIds = jobSheet
                 .Where(job => !job.Name.IsEmpty)
                 .Select(job => job.RowId);
+
+            ExcelSheet<RawRow>? categorySheet = null;
+            try
+            {
+                categorySheet = dataManager.GetExcelSheet<RawRow>(ClientLanguage.English, "ClassJobCategory");
+            }
+            catch (Exception ex)
+            {
+                logger.Warning(ex, "English ClassJobCategory sheet could not be loaded. Trying the client default.");
+            }
+
+            if (categorySheet is null)
+            {
+                try
+                {
+                    categorySheet = dataManager.GetExcelSheet<RawRow>(name: "ClassJobCategory");
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex, "ClassJobCategory sheet could not be loaded. Job intersection was skipped.");
+                    return [];
+                }
+            }
+
+            if (categorySheet is null)
+            {
+                logger.Error("ClassJobCategory sheet is unavailable. Job intersection was skipped.");
+                return [];
+            }
 
             var validJobs = itemIds.Aggregate(allClassJobIds, (validJobIds, nextItemId) =>
             {
                 if (!tryGetItemRowById(nextItemId, out var item))
                     return validJobIds;
 
-                var categoryRow = dataManager
-                    .GetExcelSheet<RawRow>(ClientLanguage.English, "ClassJobCategory")
-                    .GetRow(item.ClassJobCategory.RowId);
+                var categoryRow = categorySheet.GetRow(item.ClassJobCategory.RowId);
 
                 return validJobIds
                     .Where(id => categoryRow.ReadBoolColumn((int)id + 1));

@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+<Project Sdk="Dalamud.NET.Sdk/13.1.0">
     <PropertyGroup>
-        <TargetFramework>net10.0-windows</TargetFramework>
+        <TargetFramework>net9.0-windows7.0</TargetFramework>
         <Version>0.2.9.0</Version>
+        <AssemblyVersion>0.2.9.0</AssemblyVersion>
+        <FileVersion>0.2.9.0</FileVersion>
         <Description>Gearing, simplified.</Description>
-        <PackageProjectUrl>https://github.com/RajahOmen/BisBuddy</PackageProjectUrl>
-        <RepoUrl>https://github.com/RajahOmen/BisBuddy</RepoUrl>
+        <PackageProjectUrl>https://github.com/pollyhaei-ai/ReBisBuddy</PackageProjectUrl>
+        <RepoUrl>https://github.com/pollyhaei-ai/ReBisBuddy</RepoUrl>
         <Author>Lily</Author>
         <Name>BISBuddy</Name>
-        <DalamudApiLevel>15</DalamudApiLevel>
-        <TestingDalamudApiLevel>15</TestingDalamudApiLevel>
-        <Punchline>Gearing, simplified.</Punchline>
-        <Description>Highlights gear, coffers, and materia needed for all your gearsets
-Import from from Etro, Xivgear, or Teamcraft for easy setup
-            
-Highlights items needed for gearsets on:
-    - Need/Greed Loot Windows
-    - NPC Shops and Exchanges
-    - Marketboard
-    - Player Inventories
-    - Item Tooltips
-           
-When melding materia, highlights:
-    - Items to meld
-    - Materia to meld to item
-            
-Automatically syncs gearsets with player inventory</Description>
+        <DalamudApiLevel>13</DalamudApiLevel>
+        <TestingDalamudApiLevel>13</TestingDalamudApiLevel>
+        <Punchline>0.2.9-tw 配裝輔助（台服繁中）</Punchline>
+        <Description>台灣版《最終幻想XIV》用的 BISBuddy 0.2.9-tw。作者 Lily（https://github.com/RajahOmen/BisBuddy）。此組建給 XIVTCLauncher 搭配 yanmucorp Dalamud API 13，不是官方 Dalamud／RajahOmen 插件。
+
+介面為繁體中文。物品、職業、部位與魔晶石名稱在遊戲內依列 ID 讀取用戶端繁中資料。匯出到 xivgear.app 時使用物品 ID 與英文職業縮寫。
+
+Highlights gear, coffers, and materia needed for gearsets. Import from Etro, Xivgear, or Teamcraft.</Description>
         <Tags>bis;loot;best in slot;need;greed;gearset;gear;coffer;materia;meld;etro;xivgear</Tags>
         <ImageUrls>
-            https://raw.githubusercontent.com/RajahOmen/BisBuddy/main/images/needgreed.png;
-            https://raw.githubusercontent.com/RajahOmen/BisBuddy/main/images/npcshopexchange.png;
-            https://raw.githubusercontent.com/RajahOmen/BisBuddy/main/images/materiamelding.png;
-            https://raw.githubusercontent.com/RajahOmen/BisBuddy/main/images/inventory.png;
-            https://raw.githubusercontent.com/RajahOmen/BisBuddy/main/images/itemtooltip.png
+            https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/needgreed.png;
+            https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/npcshopexchange.png;
+            https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/materiamelding.png;
+            https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/inventory.png;
+            https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/itemtooltip.png
         </ImageUrls>
-        <IconUrl>https://raw.githubusercontent.com/RajahOmen/BisBuddy/main/images/icon.png</IconUrl>
+        <IconUrl>https://raw.githubusercontent.com/pollyhaei-ai/ReBisBuddy/main/images/icon.png</IconUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
         <IsPackable>false</IsPackable>
         <NeutralLanguage>en</NeutralLanguage>
+        <LangVersion>preview</LangVersion>
+        <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -46,13 +40,13 @@ Automatically syncs gearsets with player inventory</Description>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
         <PackageReference Include="Fastenshtein" Version="1.0.12" />
         <PackageReference Include="LinearAssignment" Version="1.2.0" />
-        <PackageReference Include="Lumina" Version="7.1.0" />
-        <PackageReference Include="Lumina.Excel" Version="7.4.1" />
-        <PackageReference Include="LuminaSupplemental.Excel" Version="*" />
-	    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.12" />
-	    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+        <!-- 3.1.0 is the newest LuminaSupplemental.Excel that targets net9.0-windows7.0. 4.x+ is net10-only. -->
+        <PackageReference Include="LuminaSupplemental.Excel" Version="3.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.11" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
+        <!-- Dalamud 13.0.0.16 loads ObjectPool 10. 10.0.12 has a netstandard2.0 asset, so it runs on net9 and matches that assembly version. -->
         <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="10.0.12" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.11" />
         <PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.2.0" />
         <PackageReference Include="Wacton.Unicolour" Version="8.0.0" />
     </ItemGroup>
@@ -79,6 +73,11 @@ Automatically syncs gearsets with player inventory</Description>
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resource.Designer.cs</LastGenOutput>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+        <!-- CultureInfo("zh-Hant") loads this satellite. Dalamud UI language "tw" is mapped to zh-Hant. -->
+        <EmbeddedResource Update="Resources\Resource.zh-Hant.resx">
+            <WithCulture>true</WithCulture>
+            <Culture>zh-Hant</Culture>
         </EmbeddedResource>
     </ItemGroup>
 

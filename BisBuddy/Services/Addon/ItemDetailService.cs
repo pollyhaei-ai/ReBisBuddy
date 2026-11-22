@@ -6,7 +6,7 @@ using FFXIVClientStructs.FFXIV.Client.Enums;
 using FFXIVClientStructs.FFXIV.Client.Graphics;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using KamiToolKit.BaseTypes;
+using KamiToolKit;
 using KamiToolKit.Extensions;
 using KamiToolKit.Nodes;
 using Lumina.Text.ReadOnly;
@@ -181,7 +181,7 @@ namespace BisBuddy.Services.Addon
                 using var stringBuilder = new RentedSeStringBuilder();
                 var newOutputSeString = stringBuilder
                     .Builder
-                    .Append(newOutputStr)
+                    .Append((ReadOnlySeString)newOutputStr)
                     .ToReadOnlySeString();
 
                 var textSize = node.GetTextDrawSize(newOutputSeString);
@@ -204,14 +204,14 @@ namespace BisBuddy.Services.Addon
 
             foreach (var (gearsetName, gearsetCount, separator) in neededStrings)
             {
-                outputBuilder.Builder.Append(gearsetName);
+                outputBuilder.Builder.Append((ReadOnlySeString)gearsetName);
                 if (gearsetCount != string.Empty)
                 {
                     outputBuilder.Builder.PushColorType(CustomNodeCountTextColorType);
-                    outputBuilder.Builder.Append(gearsetCount);
+                    outputBuilder.Builder.Append((ReadOnlySeString)gearsetCount);
                     outputBuilder.Builder.PopColorType();
                 }
-                outputBuilder.Builder.Append(separator);
+                outputBuilder.Builder.Append((ReadOnlySeString)separator);
             }
 
             outputBuilder.Builder.PopColorType();
@@ -296,7 +296,7 @@ namespace BisBuddy.Services.Addon
             var customSeString = usedInSeString(customTextNode, itemNameTwoLines);
 
             // update node text
-            customTextNode.String = customSeString;
+            customTextNode.SeString = customSeString;
         }
 
         protected override NodeBase initializeCustomNode(AtkResNode* parentNodePtr, AtkUnitBase* addon, HighlightColor color)

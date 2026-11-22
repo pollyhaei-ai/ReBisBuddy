@@ -6,6 +6,7 @@ namespace BisBuddy.Util
     public static class Constants
     {
         public static readonly string PluginName = "BISBuddy";
+        public static readonly string PluginVersionLabel = "0.2.9-tw";
         public static readonly string FullChatCommand = "/bisbuddy";
         public static readonly string ShortChatCommand = "/bis";
         public static readonly int MaxGearsetCount = 25;

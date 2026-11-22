@@ -266,6 +266,42 @@ namespace BisBuddy.Resources {
                 return ResourceManager.GetString("ContextMenuCopyJson", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Copy for Xivgear.
+        /// </summary>
+        public static string ContextMenuCopyXivgear {
+            get {
+                return ResourceManager.GetString("ContextMenuCopyXivgear", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Xivgear.
+        /// </summary>
+        public static string GearsetXivgearButton {
+            get {
+                return ResourceManager.GetString("GearsetXivgearButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Copy a sheet xivgear.app can import.
+        /// </summary>
+        public static string GearsetXivgearTooltip {
+            get {
+                return ResourceManager.GetString("GearsetXivgearTooltip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Meld Plan.
+        /// </summary>
+        public static string MeldPlanWindowTitle {
+            get {
+                return ResourceManager.GetString("MeldPlanWindowTitle", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Copy {0} text.
